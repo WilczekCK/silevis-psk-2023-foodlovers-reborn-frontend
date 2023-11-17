@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { CookiesProvider } from 'react-cookie';
 import superrouter from './routes/Router';
-import './assets/main.scss'
+import './assets/scss/main.scss'
 import './hooks/usei18n';
 
 import {
