@@ -11,8 +11,8 @@ export default function LanguageSwitcher(){
 
     return (
         <div className="language__container">
-            <button onClick={changeLanguageHandler} lang={"pl"}>PL</button>
-            <button onClick={changeLanguageHandler} lang={"en"}>EN</button>
+            <a onClick={changeLanguageHandler} lang={"pl"}>PL</a>
+            <a onClick={changeLanguageHandler} lang={"en"}>EN</a>
         </div>
     )
 }

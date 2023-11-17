@@ -5,5 +5,9 @@
     "LoginErr": "Sprawdź poprawność danych, jeśli dalej jest coś nie tak, skontaktuj się z dziekanatem",
     "LoginEmail": "Wpisz adres e-mail:",
     "LoginEmailEmpty": "Pole e-mail nie moze byc puste!",
-    "LoginEmailPlaceholder": "Wpisz adres e-mail USOS"
+    "LoginEmailPlaceholder": "Wpisz adres e-mail USOS",
+    "RememberMe": "Pamiętaj mnie",
+    "ForgotPassword": "Przypomnij hasło"
+
+
 }

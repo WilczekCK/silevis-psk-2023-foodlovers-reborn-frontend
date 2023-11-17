@@ -63,8 +63,6 @@ export default function Login() {
               preview={false}
               src={weaiLogo} 
             />
-          
-            {/* <LanguageSwitcher /> */}
 
             <div class="login__container__half__wrapper">
               <Image 
@@ -77,8 +75,8 @@ export default function Login() {
               <div class="login__container__half__wrapper__form">
                 <Input type="name" onChange={onChange} size="large" placeholder={t('LoginEmail')} prefix={<MailOutlined />} />
                 <div class="login__container__half__wrapper__form--additonals">
-                  <Checkbox>Zapamiętaj mnie</Checkbox>
-                  <a>Przypomnij hasło</a>
+                  <Checkbox>{t('RememberMe')}</Checkbox>
+                  <a>{t('ForgotPassword')}</a>
                 </div>
 
                 <Button 
@@ -90,6 +88,7 @@ export default function Login() {
                   {t('Login')}
                 </Button>
                 
+                <LanguageSwitcher />
               </div>
             </div>
 

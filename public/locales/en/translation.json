@@ -5,5 +5,8 @@
     "LoginErr": "Check your credentials or contact admin of PSK",
     "LoginEmail": "Enter your email address:",
     "LoginEmailEmpty": "Email address cannot be empty!",
-    "LoginEmailPlaceholder": "Enter an USOS email"
+    "LoginEmailPlaceholder": "Enter an USOS email",
+    "RememberMe": "Remember me",
+    "ForgotPassword": "Forgotten password?"
+
 }
