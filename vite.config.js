@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   define: {
     __cookieName: JSON.stringify('psk-auth'),
-    __pskUrl: "http://hackathon23-mockapi-env.eba-qfrnjqkt.eu-central-1.elasticbeanstalk.com/user/",
+    __pskUrl: JSON.stringify("http://hackathon23-mockapi-env.eba-qfrnjqkt.eu-central-1.elasticbeanstalk.com/user/"),
   }
 })
