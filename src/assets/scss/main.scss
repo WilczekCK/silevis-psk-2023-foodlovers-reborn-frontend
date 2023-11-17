@@ -1,10 +1,43 @@
 @import './variables.scss';
 @import './pages/login.scss';
+@font-face {
+    font-family: 'psk-font-bn';
+    src: url("../fonts/SWZCONBN.TTF");
+} 
+@font-face {
+    font-family: 'psk-font-db';
+    src: url("../fonts/SWZCONDB.TTF");
+} 
+@font-face {
+    font-family: 'psk-font-di';
+    src: url("../fonts/SWZCONDI.TTF");
+} 
+@font-face {
+    font-family: 'psk-font-dn';
+    src: url("../fonts/SWZCONDN.TTF");
+} 
+@font-face {
+    font-family: 'psk-font-dt';
+    src: url("../fonts/SWZCONDT.TTF");
+} 
+@font-face {
+    font-family: 'psk-font-li';
+    src: url("../fonts/SWZCONLI.TTF");
+} 
+@font-face {
+    font-family: 'psk-font-ln';
+    src: url("../fonts/SWZCONLN.TTF");
+} 
+@font-face {
+    font-family: 'psk-font-rn';
+    src: url("../fonts/SWZINSRN.TTF");
+} 
 
 body{
     color:white;
     background: $grey;
     margin:unset;
+    font-family: 'psk-font-ln';
 }
 
 label, a {

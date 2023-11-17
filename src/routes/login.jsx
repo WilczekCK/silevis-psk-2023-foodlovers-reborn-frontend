@@ -57,10 +57,18 @@ export default function Login() {
             {/* <LanguageSwitcher /> */}
 
             <div class="login__container__half__wrapper">
-            <label style={{display: 'flex', flexDirection: 'column'}}> {t('LoginEmail')}
-            <input type="name" onChange={onChange} placeholder={t('LoginEmailPlaceholder')}/>
-            </label>
-            <button onClick={onSubmit}>{t('Login')}</button>
+              <Image 
+                width="167px"
+                preview={false}
+                src={pskLogo} 
+              />
+              
+              <h2>Zaloguj się do systemu praktyk</h2>
+
+              <label> {t('LoginEmail')}
+              <input type="name" onChange={onChange} placeholder={t('LoginEmailPlaceholder')}/>
+              </label>
+              <button onClick={onSubmit}>{t('Login')}</button>
             </div>
 
           </div>
