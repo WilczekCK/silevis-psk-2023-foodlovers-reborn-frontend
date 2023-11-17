@@ -9,9 +9,19 @@
         max-width:50%;
         min-height:100vh;
 
+        @media (max-width:768px){
+            display: none !important;
+            max-width:80%;
+        }
+
         &:first-of-type{
             padding:40px 0px 0px 40px;
             box-sizing: border-box;
+
+            @media (max-width:768px){
+                display: flex !important;
+                width:100% !important;
+            }
         }
 
         &__wrapper {
@@ -24,11 +34,16 @@
             align-items: center;
             gap:10px;
 
+            @media (max-width:768px){
+                max-width:100% !important;
+            }
+
             h2{
                 color:$black;
                 font-family: 'psk-font-bn';
                 font-size:32px;
                 font-weight:400;
+                text-align: center;
             }
 
             &__form {

@@ -98,7 +98,7 @@ export default function Login() {
 
           </div>
           
-          <div class="login__container__half" style={{backgroundImage: `url(${bgUrl})`, height: '100%'}}>
+          <div class="login__container__half" style={{backgroundImage: `url(${bgUrl})`, height: '100%', backgroundSize: 'cover'}}>
           </div>
         </div>
       )
