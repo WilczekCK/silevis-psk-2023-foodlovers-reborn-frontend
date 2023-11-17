@@ -10,7 +10,8 @@
     "ForgotPassword": "Przypomnij hasło",
     "English": "Angielski",
     "Polish": "Polski",
-    "SelectLanguage": "Wybierz język"
+    "SelectLanguage": "Wybierz język",
+    "LoginPageMainText": "Zaloguj się do systemu praktyk"
 
 
 }

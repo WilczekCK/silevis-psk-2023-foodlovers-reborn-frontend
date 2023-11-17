@@ -10,5 +10,6 @@
     "ForgotPassword": "Forgotten password?",
     "English": "English",
     "Polish": "Polish",
-    "SelectLanguage": "Select language"
+    "SelectLanguage": "Select language",
+    "LoginPageMainText": "Login to the intership system"
 }

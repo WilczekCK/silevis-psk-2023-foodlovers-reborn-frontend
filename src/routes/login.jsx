@@ -75,7 +75,7 @@ export default function Login() {
                 src={pskLogo} 
               />
               
-              <h2>Zaloguj się do systemu praktyk</h2>
+              <h2>{t("LoginPageMainText")}</h2>
               <div class="login__container__half__wrapper__form">
                 <Input type="name" onChange={onChange} size="large" placeholder={t('LoginEmail')} prefix={<MailOutlined />} />
                 <div class="login__container__half__wrapper__form--additonals">
