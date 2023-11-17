@@ -44,12 +44,16 @@ export default function Login() {
       ? <Navigate replace to="/" />
       : (
         <div class="login__container">
-          <DatePicker />
-          <LanguageSwitcher />
-          <label style={{display: 'flex', flexDirection: 'column'}}> {t('LoginEmail')}
-          <input type="name" onChange={onChange} placeholder={t('LoginEmailPlaceholder')}/>
-          </label>
-          <button onClick={onSubmit}>{t('Login')}</button>
+          <div class="login__container__half">
+            <LanguageSwitcher />
+            <label style={{display: 'flex', flexDirection: 'column'}}> {t('LoginEmail')}
+            <input type="name" onChange={onChange} placeholder={t('LoginEmailPlaceholder')}/>
+            </label>
+            <button onClick={onSubmit}>{t('Login')}</button>
+          </div>
+          <div class="login__container__half">
+            
+          </div>
         </div>
       )
   );
