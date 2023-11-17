@@ -7,6 +7,8 @@
     "LoginEmailEmpty": "Email address cannot be empty!",
     "LoginEmailPlaceholder": "Enter an USOS email",
     "RememberMe": "Remember me",
-    "ForgotPassword": "Forgotten password?"
-
+    "ForgotPassword": "Forgotten password?",
+    "English": "English",
+    "Polish": "Polish",
+    "SelectLanguage": "Select language"
 }
