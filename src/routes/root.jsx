@@ -1,6 +1,7 @@
 import { Outlet, Link, useLoaderData, redirect, useNavigation, Route, Navigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from "../components/LanguageSwitcher";
 
 export async function loader({ params }) {
 //   const contacts = await getContacts();
@@ -16,13 +17,6 @@ export default function Root() {
     const [cookies, removeCookie] = useCookies([__cookieName]);
     const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
     const { t, i18n } = useTranslation();
-    
-    const changeLanguageHandler = ({target}) =>
-    {
-      const {lang} = target;
-      console.log(lang);
-      i18n.changeLanguage(lang)
-    }
 
     function logout(){
         removeCookie(__cookieName);
@@ -35,9 +29,7 @@ export default function Root() {
             ? <Navigate replace to="/login" />
             : (
                 <>
-                    <button onClick={changeLanguageHandler} lang={"pl"}>PL</button>
-                    <button onClick={changeLanguageHandler} lang={"en"}>EN</button>
-
+                    <LanguageSwitcher />
                     <h2>{t('Welcome')} {cookies[__cookieName].firstName}!</h2>
                     <button onClick={logout}>Logout</button>
                 </>
