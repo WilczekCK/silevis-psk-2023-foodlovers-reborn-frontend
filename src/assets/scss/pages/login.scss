@@ -1,0 +1,15 @@
+.login__container{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    height:100vh;
+
+    &__half {
+        min-width:50%;
+        max-width:50%;
+
+        &:first-of-type{
+            padding:40px 0px 0px 40px;
+        }
+    }
+}

@@ -1,8 +1,10 @@
 @import './variables.scss';
-@import './login.scss';
+@import './pages/login.scss';
 
 body{
     color:white;
+    background: $grey;
+    margin:unset;
 }
 
 label, a {
