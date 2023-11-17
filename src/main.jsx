@@ -18,21 +18,19 @@ const router = createBrowserRouter([
     element: <Root />,
     errorElement: <ErrorPage />,
     loader: rootLoader,
-    children: [
-      {
-        path: "login",
-        element: <Login />,
-      },
-    ],
-  }
+  },
+  {
+    path: "login",
+    element: <Login />,
+    errorElement: <ErrorPage />,
+    loader: rootLoader,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  
   <React.StrictMode>
     <CookiesProvider defaultSetOptions={{ path: '/' }}>
       <RouterProvider router={router} />
     </CookiesProvider>
   </React.StrictMode>
-  
 );
