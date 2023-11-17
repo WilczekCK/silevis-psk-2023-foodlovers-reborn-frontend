@@ -1,35 +1,31 @@
 import { useCookies } from 'react-cookie';
-import { Navigate } from "react-router-dom";
+import { Navigate, redirect } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios'
 
 export default function Login() {
   const [cookies, setCookie] = useCookies([__cookieName]);
   const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
+  const [userEmail, setUserEmail] = useState('');
 
-  const [isLoading, setIsLoading] = useState(false);
-  const [userEmail, setUserEmail] = useState('s022222@student.tu.kielce.pl');
-
+  //s022222@student.tu.kielce.pl
   async function onSubmit() {
-    try {
-      setIsLoading(true);
-      
-      await axios({
-        url: `/api/user/${userEmail}`
-      }).then(response => {
-        const {data} = response;
-        console.log(data);
-
-        if (data) {
-          setCookie(__cookieName, data);
-          redirect('/');
-        }
-
-        setIsLoading(false);
-      })
-    } catch (error) {
-      setIsLoading(false);
+    if(!userEmail) {
+      return alert("Pole e-mail nie moze byc puste!");
     }
+    
+    await axios({
+      url: `/api/user/${userEmail}`
+    }).then(response => {
+      const {data} = response;
+
+      if (data) {
+        setCookie(__cookieName, data);
+        redirect('/');
+      }
+    }).catch(error => {
+      alert("Sprawdź poprawność danych, jeśli dalej jest coś nie tak, skontaktuj się z dziekanatem");
+    })
   }
 
   function onChange({target}) {
@@ -42,9 +38,6 @@ export default function Login() {
       ? <Navigate replace to="/" />
       : (
         <div class="login__container">
-          {isLoading && "Trwa ładowanie"}
-          {userEmail}
-
           <label style={{display: 'flex', flexDirection: 'column'}}> Wpisz adres e-mail:
           <input type="name" onChange={onChange} placeholder="Wpisz powiązany adres email z USOS"/>
           </label>
