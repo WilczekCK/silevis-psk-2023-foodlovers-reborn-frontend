@@ -1,43 +1,52 @@
 import { useCookies } from 'react-cookie';
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
-import { AxiosProvider, Request, Get, Delete, Head, Post, Put, Patch, withAxios } from 'react-axios'
+import axios from 'axios'
 
 export default function Login() {
   const [cookies, setCookie] = useCookies([__cookieName]);
-  const [userId, setUserId]  = useState('');
+  const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [userEmail, setUserEmail] = useState('s022222@student.tu.kielce.pl');
 
   async function onSubmit() {
     try {
-      const response = await axios.get("s022222@student.tu.kielce.pl");
-      setData(response.data);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  }
+      setIsLoading(true);
+      
+      await axios({
+        url: `/api/user/${userEmail}`
+      }).then(response => {
+        const {data} = response;
+        console.log(data);
 
-  function setCokies(){
-    setCookie(__cookieName, {
-      id: 21,
-      name: 'pawel'
-    });
-    redirect('/');
+        if (data) {
+          setCookie(__cookieName, data);
+          redirect('/');
+        }
+
+        setIsLoading(false);
+      })
+    } catch (error) {
+      setIsLoading(false);
+    }
   }
 
   function onChange({target}) {
     const {value} = target;
-    setUserId(value);
+    setUserEmail(value);
   }
 
   return (
-    cookies[__cookieName].name
+      isCookieAvailable
       ? <Navigate replace to="/" />
       : (
         <div class="login__container">
-          {userId}
+          {isLoading && "Trwa ładowanie"}
+          {userEmail}
 
-          <label style={{display: 'flex', flexDirection: 'column'}}> Numer indeksu:
-          <input type="name" onChange={onChange} />
+          <label style={{display: 'flex', flexDirection: 'column'}}> Wpisz adres e-mail:
+          <input type="name" onChange={onChange} placeholder="Wpisz powiązany adres email z USOS"/>
           </label>
           <button onClick={onSubmit}>Zaloguj się!</button>
         </div>

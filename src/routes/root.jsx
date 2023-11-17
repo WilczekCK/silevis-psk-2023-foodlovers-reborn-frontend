@@ -14,6 +14,7 @@ export default function Root() {
     const navigation = useNavigation();
     const { contacts } = useLoaderData();
     const [cookies, removeCookie] = useCookies([__cookieName]);
+    const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
 
     function logout(){
         removeCookie(__cookieName);
@@ -21,7 +22,7 @@ export default function Root() {
     }
 
     return (
-        (!cookies || !cookies[__cookieName] || !cookies[__cookieName].name)
+        !isCookieAvailable
             ? <Navigate replace to="/login" />
             : (
                 <>
