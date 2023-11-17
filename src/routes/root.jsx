@@ -13,12 +13,22 @@ return [
 export default function Root() {
     const navigation = useNavigation();
     const { contacts } = useLoaderData();
-    const [cookies, setCookie] = useCookies([__cookieName]);
+    const [cookies, removeCookie] = useCookies([__cookieName]);
+
+    function logout(){
+        removeCookie(__cookieName);
+        redirect('/login');
+    }
 
     return (
-        !cookies
+        (!cookies || !cookies[__cookieName] || !cookies[__cookieName].name)
             ? <Navigate replace to="/login" />
-            : <>DASHBOARD</> 
+            : (
+                <>
+                    <h2>Witaj {cookies[__cookieName].name}!</h2>
+                    <button onClick={logout}>Logout</button>
+                </>
+            )
         
     )
     

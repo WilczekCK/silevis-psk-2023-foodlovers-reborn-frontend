@@ -7,11 +7,15 @@ export default function Login() {
   const [userId, setUserId]  = useCookies('');
 
   function onSubmit() {
-    setCookie(__cookieName, 'test');
+    setCookie(__cookieName, {
+      id: 21,
+      name: 'pawel'
+    });
+    redirect('/');
   }
 
   return (
-    cookies
+    cookies[__cookieName].name
       ? <Navigate replace to="/" />
       : <button onClick={onSubmit}>Login</button>
   );
