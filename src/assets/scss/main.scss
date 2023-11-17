@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import './pages/login.scss';
+
 @font-face {
     font-family: 'psk-font-bn';
     src: url("../fonts/SWZCONBN.TTF");
@@ -55,3 +56,7 @@ label, a {
 .lighter_orange_color{color:$lighterOrange !important;}
 .bright_orange_color{color:$brightOrange !important;}
 .brighter_orange_color{color:$brighterOrange !important;}
+
+.ant-input-affix-wrapper:hover,
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper:focus-within{border-color:$lighterOrange !important;}

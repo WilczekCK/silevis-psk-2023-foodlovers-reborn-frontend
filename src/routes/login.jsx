@@ -6,6 +6,11 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from "../components/LanguageSwitcher";
 
 import { Image } from 'antd';
+import { MailOutlined } from '@ant-design/icons';
+import { Input } from 'antd';
+import { Checkbox } from 'antd';
+import { Button } from 'antd';
+
 import bgUrl from '../assets/images/login_image.jpg';
 import weaiLogo from '../assets/images/weaii-small.png';
 import pskLogo from '../assets/images/polibuda-logo-1.svg';
@@ -16,6 +21,7 @@ export default function Login() {
   const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
   const [userEmail, setUserEmail] = useState('');
   const { t, i18n } = useTranslation();
+  const [isLoading, setIsLoading] = useState(false);
 
   //s022222@student.tu.kielce.pl
   async function onSubmit() {
@@ -23,10 +29,13 @@ export default function Login() {
       return alert(t('LoginEmailEmpty'));
     }
     
+    setIsLoading(true);
+
     await axios({
       url: `/api/user/${userEmail}`
     }).then(response => {
       const {data} = response;
+      setIsLoading(false);
 
       if (data) {
         setCookie(__cookieName, data);
@@ -34,6 +43,7 @@ export default function Login() {
       }
     }).catch(error => {
       alert(t('LoginErr'));
+      setIsLoading(false);
     })
   }
 
@@ -64,11 +74,23 @@ export default function Login() {
               />
               
               <h2>Zaloguj się do systemu praktyk</h2>
+              <div class="login__container__half__wrapper__form">
+                <Input type="name" onChange={onChange} size="large" placeholder={t('LoginEmail')} prefix={<MailOutlined />} />
+                <div class="login__container__half__wrapper__form--additonals">
+                  <Checkbox>Zapamiętaj mnie</Checkbox>
+                  <a>Przypomnij hasło</a>
+                </div>
 
-              <label> {t('LoginEmail')}
-              <input type="name" onChange={onChange} placeholder={t('LoginEmailPlaceholder')}/>
-              </label>
-              <button onClick={onSubmit}>{t('Login')}</button>
+                <Button 
+                  onClick={onSubmit} 
+                  type="primary"
+                  size="large"
+                  loading={isLoading}
+                >
+                  {t('Login')}
+                </Button>
+                
+              </div>
             </div>
 
           </div>

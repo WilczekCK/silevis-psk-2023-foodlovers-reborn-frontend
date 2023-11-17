@@ -14,10 +14,5 @@ export default defineConfig({
   }},
   define: {
     __cookieName: JSON.stringify('psk-auth')
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-    }
   }
 })
