@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { CookiesProvider } from 'react-cookie';
 import superrouter from './routes/Router';
 import './index.css'
+import './hooks/usei18n';
 
 import {
   createBrowserRouter,
