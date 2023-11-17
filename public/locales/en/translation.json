@@ -1,3 +1,9 @@
 {
-    "Welcome": "Welcome"
+    "Welcome": "Welcome",
+    "Logout": "Logout",
+    "Login": "Login",
+    "LoginErr": "Check your credentials or contact admin of PSK",
+    "LoginEmail": "Enter your email address:",
+    "LoginEmailEmpty": "Email address cannot be empty!",
+    "LoginEmailPlaceholder": "Enter an USOS email"
 }

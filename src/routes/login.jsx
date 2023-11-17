@@ -2,16 +2,20 @@ import { useCookies } from 'react-cookie';
 import { Navigate, redirect } from "react-router-dom";
 import { useState } from "react";
 import axios from 'axios'
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from "../components/LanguageSwitcher";
+
 
 export default function Login() {
   const [cookies, setCookie] = useCookies([__cookieName]);
   const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
   const [userEmail, setUserEmail] = useState('');
+  const { t, i18n } = useTranslation();
 
   //s022222@student.tu.kielce.pl
   async function onSubmit() {
     if(!userEmail) {
-      return alert("Pole e-mail nie moze byc puste!");
+      return alert(t('LoginEmailEmpty'));
     }
     
     await axios({
@@ -24,7 +28,7 @@ export default function Login() {
         redirect('/');
       }
     }).catch(error => {
-      alert("Sprawdź poprawność danych, jeśli dalej jest coś nie tak, skontaktuj się z dziekanatem");
+      alert(t('LoginErr'));
     })
   }
 
@@ -38,10 +42,11 @@ export default function Login() {
       ? <Navigate replace to="/" />
       : (
         <div class="login__container">
-          <label style={{display: 'flex', flexDirection: 'column'}}> Wpisz adres e-mail:
-          <input type="name" onChange={onChange} placeholder="Wpisz powiązany adres email z USOS"/>
+          <LanguageSwitcher />
+          <label style={{display: 'flex', flexDirection: 'column'}}> {t('LoginEmail')}
+          <input type="name" onChange={onChange} placeholder={t('LoginEmailPlaceholder')}/>
           </label>
-          <button onClick={onSubmit}>Zaloguj się!</button>
+          <button onClick={onSubmit}>{t('Login')}</button>
         </div>
       )
   );

@@ -31,7 +31,7 @@ export default function Root() {
                 <>
                     <LanguageSwitcher />
                     <h2>{t('Welcome')} {cookies[__cookieName].firstName}!</h2>
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={logout}>{t('Logout')}</button>
                 </>
             )
         )

@@ -1,3 +1,9 @@
 {
-    "Welcome": "Witaj"
+    "Welcome": "Witaj",
+    "Logout": "Wyloguj się!",
+    "Login": "Zaloguj się!",
+    "LoginErr": "Sprawdź poprawność danych, jeśli dalej jest coś nie tak, skontaktuj się z dziekanatem",
+    "LoginEmail": "Wpisz adres e-mail:",
+    "LoginEmailEmpty": "Pole e-mail nie moze byc puste!",
+    "LoginEmailPlaceholder": "Wpisz adres e-mail USOS"
 }
