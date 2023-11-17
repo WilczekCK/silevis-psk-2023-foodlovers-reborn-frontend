@@ -1,5 +1,21 @@
 @import './variables.scss';
 
 body{
-    background: $strongOrange;
+    color:white;
 }
+
+label, a {
+    color:$lightOrange;
+}
+
+.strong_orange_background{background:$strongOrange !important;}
+.light_orange_background{background:$lightOrange !important;}
+.lighter_orange_background{background:$lighterOrange !important;}
+.bright_orange_background{background:$brightOrange !important;}
+.brighter_orange_background{background:$brighterOrange !important;}
+
+.strong_orange_color{color:$strongOrange !important;}
+.light_orange_color{color:$lightOrange !important;}
+.lighter_orange_color{color:$lighterOrange !important;}
+.bright_orange_color{color:$brightOrange !important;}
+.brighter_orange_color{color:$brighterOrange !important;}
