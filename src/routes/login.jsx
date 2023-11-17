@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from 'axios'
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from "../components/LanguageSwitcher";
+import { DatePicker } from 'antd';
+
 
 
 export default function Login() {
@@ -42,6 +44,7 @@ export default function Login() {
       ? <Navigate replace to="/" />
       : (
         <div class="login__container">
+          <DatePicker />
           <LanguageSwitcher />
           <label style={{display: 'flex', flexDirection: 'column'}}> {t('LoginEmail')}
           <input type="name" onChange={onChange} placeholder={t('LoginEmailPlaceholder')}/>
