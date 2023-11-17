@@ -34,6 +34,18 @@
             &__form {
                 max-width:400px;
 
+                .language_dropdown{
+                    width:100%;
+                    display:block;
+                    background:white;
+                    margin-top:25px;
+                    padding:5px;
+                    box-sizing: border-box;
+                    border-radius:2px;
+                    color:$grey;
+                    font-family:'psk-font-ln';
+                }
+
                 &--additonals{
                     display:flex;
                     justify-content: space-between;
@@ -65,11 +77,13 @@
                     background:$lightOrange;
 
                     svg{fill:white !important}
-                    
+
                     &:hover{
                         background:$strongOrange !important;
                     }
                 }
+
+
             }
 
             
