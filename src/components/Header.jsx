@@ -30,7 +30,7 @@ export default function Header(){
 
             <div class="header__container--menu">
                 <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/informations">Dane studenta i praktyk zawodowych</NavLink>
-                <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/wnioski">Wnioski i dokumenty</NavLink>
+                <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applications">Wnioski i dokumenty</NavLink>
             </div>
 
             <div class="header__container--languageSwitcher">

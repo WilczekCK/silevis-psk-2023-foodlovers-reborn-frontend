@@ -2,6 +2,7 @@
 @import './pages/login.scss';
 @import './pages/header.scss';
 @import './pages/informations-student.scss';
+@import './pages/applications-student.scss';
 @import './components/headingWithInfo.scss';
 
 @font-face {
@@ -86,3 +87,10 @@ button{
     display: flex;
     flex-direction: column;
 }
+
+
+.green_bg_icon > *{background:#4A8E32; border-radius:14px; font-size:24px; border:unset;}
+.green_bg_icon > * svg{fill:white !important}
+
+.red_bg_icon > *{background:#933535; border-radius:14px; font-size:24px;}
+.red_bg_icon > * svg{fill:white !important}

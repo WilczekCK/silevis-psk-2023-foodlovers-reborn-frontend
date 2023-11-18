@@ -1,0 +1,29 @@
+.applications__informations__container{
+    display:flex;
+    color: $black;
+    font-family:'psk-font-dn';
+
+    &__half{
+        width:50%;
+        min-height:70vh;
+        margin:5px;
+        border-radius:10px;
+        background:#fff;
+        padding:10px 30px;
+        padding-bottom:40px;
+
+        h3{
+            font-weight:700;
+            font-size:25px;
+            line-height:24px;
+            letter-spacing:-.7%;
+        }
+
+        h4{
+            font-weight:700;
+            font-size:20px;
+            line-height:24px;
+            letter-spacing:-.7%;
+        }
+    }
+}
