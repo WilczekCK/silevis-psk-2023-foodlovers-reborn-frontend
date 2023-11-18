@@ -33,7 +33,7 @@ export default function StudentCardAdmin(props){
         <>
             <h4>{props.user.firstName} {props.user.lastName} ({props.user.id})</h4>
             
-            <div style={{display:'flex', flexDirection:'row', gap:'10px'}}>
+            <div style={{display:'flex', flexDirection:'row', gap:'10px', flexWrap: 'wrap'}}>
                 <Button className={infoSelected != 'student' && 'notSelected'} type="primary" onClick={(e) => setInfoSelected('student')}> {t('ListButtonOne')} </Button>
                 <Button className={infoSelected != 'company' && 'notSelected'} type="primary" onClick={(e) => setInfoSelected('company')}> {t('ListButtonTwo')} </Button>
                 <Button className={infoSelected != 'applications' && 'notSelected'} type="primary" onClick={(e) => setInfoSelected('applications')}> {t('ListButtonThree')} </Button>
