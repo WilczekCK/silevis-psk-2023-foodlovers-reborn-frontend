@@ -11,6 +11,7 @@ import HeadingWithInfo from '../components/HeadingWithInfo';
 import pdf from '../assets/images/pdf.png';
 import {CloseCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { Avatar, List } from 'antd';
+import { Alert, Flex, Spin } from 'antd';
 
 const positionOptions = ['top', 'bottom', 'both'];
 const alignOptions = ['start', 'center', 'end'];
@@ -22,14 +23,15 @@ export default function Applications() {
   const { t, i18n } = useTranslation();
   const [isSelected, setIsSelected] = useState(false);
 
-  const data = cookies[__allStudentsCookie];
+  const [listLoading, setListLoading] = useState(true);
+  const [detailsLoading, setDetailsLoading] = useState(true);
+  const [isStudentSelected, setIsStudentSelected] = useState(false);
 
-  console.log(data);
+  const data = cookies[__allStudentsCookie];
 
   function getItemById(id) {
     return data.find(item => item.id === parseInt(id));
   }
-
 
   function selectApplication({target}){
     const {id} = target;
@@ -70,37 +72,46 @@ export default function Applications() {
                 <h3>Lista praktykantów</h3>
                 <Divider />
 
-                <HeadingWithInfo 
-                        title="Wyniki" 
-                        content={`Wyświetlono: ${data.length} studentów`}
+                {listLoading && <Spin />}
+                {!listLoading && (
+                  <>
+                    <HeadingWithInfo 
+                            title="Wyniki" 
+                            content={`Wyświetlono: ${data.length} studentów`}
+                        />
+                    <div class="student__list">
+                    <List
+                      itemLayout="horizontal"
+                      pagination={{ position, align, pageSize: 1 }}
+                      dataSource={data}
+                      renderItem={(item, index) => (
+                        <List.Item>
+                          <List.Item.Meta
+                            avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
+                            title={<a key={item.id} studentid={item.id}>{item.firstName} {item.lastName}</a>}
+                            description={
+                              <div className="meta_student">
+                                <div><b>Kierunek:</b> {extractAndDisplay(item.studentProgrammes, 'programme')}</div>
+                                <div><b>Status:</b> {item.status ? <span class="light_orange_color">Zaliczony</span> : "Do zaliczenia"}</div>
+                                <div><b>Termin:</b> {item.date}</div>
+                                <div><b>Zobacz</b></div>
+                              </div>
+                            }
+                          />
+                        </List.Item>
+                      )}
                     />
-                <div class="student__list">
-                <List
-                  itemLayout="horizontal"
-                  pagination={{ position, align, pageSize: 1 }}
-                  dataSource={data}
-                  renderItem={(item, index) => (
-                    <List.Item>
-                      <List.Item.Meta
-                        avatar={<Avatar src={`https://xsgames.co/randomusers/avatar.php?g=pixel&key=${index}`} />}
-                        title={<a key={item.id} studentid={item.id}>{item.firstName} {item.lastName}</a>}
-                        description={
-                          <div className="meta_student">
-                            <div><b>Kierunek:</b> {extractAndDisplay(item.studentProgrammes, 'programme')}</div>
-                            <div><b>Status:</b> {item.status ? <span class="light_orange_color">Zaliczony</span> : "Do zaliczenia"}</div>
-                            <div><b>Termin:</b> {item.date}</div>
-                            <div><b>Zobacz</b></div>
-                          </div>
-                        }
-                      />
-                    </List.Item>
-                  )}
-                />
-                </div>
+                    </div>
+                  </>
+                )}
             </div>
 
             <div class="student__informations__container__half">
+            {!isStudentSelected && <h2>Wybierz studenta z listy obok</h2>}
+            {(isStudentSelected && detailsLoading) && <Spin />}
+            {(isStudentSelected && !detailsLoading) && (
                 <StudentCardAdmin user={data[0]} />
+            )}
             </div>
         </div>
     </>
