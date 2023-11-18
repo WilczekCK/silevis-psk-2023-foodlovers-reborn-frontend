@@ -15,7 +15,6 @@ export default function Login() {
   const [cookies, setCookie] = useCookies([__cookieName]);
   const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
   const { t, i18n } = useTranslation();
-
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedModal, setIsSelectedModal] = useState(false);
 

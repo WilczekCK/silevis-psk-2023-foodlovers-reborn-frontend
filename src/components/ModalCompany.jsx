@@ -10,17 +10,12 @@ export default function ModalCompany(){
     const [cookie, setCookie, removeCookie] = useCookies([__cookieName]);
     const { t, i18n } = useTranslation();
 
-    const [value, setValue] = useState(() => dayjs('2017-01-25'));
-    const [selectedValue, setSelectedValue] = useState(() => dayjs('2017-01-25'));
-  
-    const onSelect = (newValue) => {
-      setValue(newValue);
-      setSelectedValue(newValue);
-    };
-  
-    const onPanelChange = (newValue) => {
-      setValue(newValue);
-    };
+    const [nip, setNip] = useState('');
+    const [regon, setRegon] = useState('');
+    const [krs, setKrs] = useState('');
+    const [companyName, setCompanyName] = useState('');
+    const [companyAddress, setCompanyAddress] = useState('');
+
     
     return (
         <div className="company__modal">
@@ -28,28 +23,28 @@ export default function ModalCompany(){
 
             <label>
               NIP:
-              <Input placeholder="" />
+              <Input type="number" min="0" placeholder="" value={nip} onChange={(e) => setNip(e.target.value)}/>
             </label>
             
             <Button type="primary">Spróbuj uzupełnić po NIP</Button>
             <label>
             Regon
-            <Input placeholder="" />
+            <Input type="number" min="0" placeholder="" value={regon} onChange={(e) => setRegon(e.target.value)} />
             </label>
             
             <label>
               KRS
-              <Input placeholder="" />
+              <Input type="number" min="0" placeholder="" value={krs} onChange={(e) => setKrs(e.target.value)} />
             </label>
             
             <label>
               Nazwa firmy
-              <Input placeholder="" />
+              <Input placeholder="" value={companyName} onChange={(e) => setCompanyName(e.target.value)}/>
             </label>
             
             <label>
-              Nazwa firmy
-              <Input placeholder="" />
+              Adres firmy
+              <Input placeholder="" value={companyAddress} onChange={(e) => setCompanyAddress(e.target.value)}/>
             </label>
 
             <Button type="primary">Wyślij</Button>
