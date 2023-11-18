@@ -134,7 +134,7 @@ a.ant-btn, button{
 }
 
 
-.student__list{height:400px; overflow-y:scroll; box-sizing:border-box; padding-right:8px; margin-top:20px;}
+.student__list{box-sizing:border-box; padding-right:8px; margin-top:20px;}
 .notSelected{background:$grey !important; color:$black;}
 
 .submitter{
@@ -149,4 +149,10 @@ a.ant-btn, button{
     button:nth-child(2){
         background:#933535 !important;
     }
+}
+
+
+.ant-pagination-item-active{
+    border-color:$strongOrange !important;
+    a{color:$strongOrange !important}
 }

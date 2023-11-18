@@ -12,6 +12,8 @@ import pdf from '../assets/images/pdf.png';
 import {CloseCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { Avatar, List } from 'antd';
 
+const positionOptions = ['top', 'bottom', 'both'];
+const alignOptions = ['start', 'center', 'end'];
 
 export default function Applications() {
   const [cookies, setCookie] = useCookies([__cookieName]);
@@ -29,6 +31,7 @@ export default function Applications() {
     {id: 7, firstName: "Marian", lastName: "Kowalski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
     {id: 8, firstName: "Patryk", lastName: "Jakubowski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
     {id: 9, firstName: "Paweł", lastName: "Nowak", spec:"Informatyka", status:1, date:'01.07 - 26.07'},
+    {id: 10, firstName: "Adam", lastName: "Kowalski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
   ]
 
   function getItemById(id) {
@@ -62,6 +65,9 @@ export default function Applications() {
     },
   ];
 
+  const [position, setPosition] = useState('bottom');
+  const [align, setAlign] = useState('center');
+
   return (
     !isCookieAvailable || cookies[__cookieName].staffStatus == 0
         ? <Navigate replace to="/" />
@@ -79,6 +85,7 @@ export default function Applications() {
                 <div class="student__list">
                 <List
                   itemLayout="horizontal"
+                  pagination={{ position, align, pageSize: 4 }}
                   dataSource={data}
                   renderItem={(item, index) => (
                     <List.Item>
