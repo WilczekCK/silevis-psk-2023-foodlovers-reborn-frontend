@@ -47,7 +47,9 @@ export default function Login() {
       await axios({
         url: `/api/user/${user}`
       }).then(async response => {
-        detailedInfo.push(response.data);
+        if(response.data.staffStatus == 0){
+          detailedInfo.push(response.data);
+        }
       })
     }
 

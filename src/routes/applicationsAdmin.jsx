@@ -14,6 +14,7 @@ import { Avatar, List } from 'antd';
 
 const positionOptions = ['top', 'bottom', 'both'];
 const alignOptions = ['start', 'center', 'end'];
+const extractAndDisplay = (array, key) => array.map(item => item[key]).join(', ');
 
 export default function Applications() {
   const [cookies, setCookie] = useCookies([__cookieName]);
@@ -21,18 +22,9 @@ export default function Applications() {
   const { t, i18n } = useTranslation();
   const [isSelected, setIsSelected] = useState(false);
 
-  const data = [
-    {id: 1, firstName: "Adam", lastName: "Kowalski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
-    {id: 2, firstName: "Patryk", lastName: "Jakubowski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
-    {id: 3, firstName: "Paweł", lastName: "Nowak", spec:"Informatyka", status:1, date:'01.07 - 26.07'},
-    {id: 4, firstName: "Magda", lastName: "Kowalski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
-    {id: 5, firstName: "Piotr", lastName: "Jakubowski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
-    {id: 6, firstName: "Waldemar", lastName: "Nowak", spec:"Informatyka", status:1, date:'01.07 - 26.07'},
-    {id: 7, firstName: "Marian", lastName: "Kowalski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
-    {id: 8, firstName: "Patryk", lastName: "Jakubowski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
-    {id: 9, firstName: "Paweł", lastName: "Nowak", spec:"Informatyka", status:1, date:'01.07 - 26.07'},
-    {id: 10, firstName: "Adam", lastName: "Kowalski", spec:"Informatyka", status:0, date:'01.07 - 26.07'},
-  ]
+  const data = cookies[__allStudentsCookie];
+
+  console.log(data);
 
   function getItemById(id) {
     return data.find(item => item.id === parseInt(id));
@@ -85,7 +77,7 @@ export default function Applications() {
                 <div class="student__list">
                 <List
                   itemLayout="horizontal"
-                  pagination={{ position, align, pageSize: 4 }}
+                  pagination={{ position, align, pageSize: 1 }}
                   dataSource={data}
                   renderItem={(item, index) => (
                     <List.Item>
@@ -94,7 +86,7 @@ export default function Applications() {
                         title={<a key={item.id} studentid={item.id}>{item.firstName} {item.lastName}</a>}
                         description={
                           <div className="meta_student">
-                            <div><b>Kierunek:</b> {item.spec}</div>
+                            <div><b>Kierunek:</b> {extractAndDisplay(item.studentProgrammes, 'programme')}</div>
                             <div><b>Status:</b> {item.status ? <span class="light_orange_color">Zaliczony</span> : "Do zaliczenia"}</div>
                             <div><b>Termin:</b> {item.date}</div>
                             <div><b>Zobacz</b></div>
