@@ -3,6 +3,10 @@
     color: $black;
     font-family:'psk-font-dn';
 
+    @media(max-width:1024px){
+        flex-wrap:wrap;
+    }
+
     &__half{
         width:50%;
         min-height:70vh;
@@ -11,6 +15,11 @@
         background:#fff;
         padding:10px 30px;
         padding-bottom:40px;
+
+        @media(max-width:1024px){
+            width:100%;
+            min-height:30vh;
+        }
 
         h3{
             font-weight:700;
