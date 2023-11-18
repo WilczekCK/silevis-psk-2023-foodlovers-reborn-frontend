@@ -9,6 +9,7 @@ import HeadingWithInfo from '../components/HeadingWithInfo';
 import ModalDate from '../components/ModalDate';
 import ModalCompany from '../components/ModalCompany';
 import { Modal } from 'antd';
+import axios from 'axios'
 
 
 export default function Login() {
