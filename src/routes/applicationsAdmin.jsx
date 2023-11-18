@@ -32,19 +32,29 @@ export default function Applications() {
   const data = cookies[__allStudentsCookie];
 
   function getItemById(id) {
-    return data.find(item => item.id === parseInt(id));
-  }
-
-  function selectApplication({target}){
-    const {id} = target;
-    setIsSelected(getItemById(id));
+    console.log(id);
+    return data.find(item => parseInt(item.id) == parseInt(id));
   }
 
   async function fetchStudentInfo(id){
+    const user = getItemById(id);
+    setIsSelected(user);
+    setDetailsLoading(true);
+    setIsStudentSelected(false);
+
     await axios({
-      url: `http://10.5.5.208:5158/api/Internship/GetByStudentId?id="${id}"`
+      url: `http://10.5.5.208:5158/api/Internship/GetByStudentId?id=${id}`
     }).then(async response => {
-      console.log(response)
+      
+      if (response) {
+        setIsStudentSelected(response.data)
+
+        // Dla efektu :)
+        setTimeout(function(){
+          setDetailsLoading(false)
+        }, 1500);
+      }
+      
     })
   }
 
@@ -102,8 +112,8 @@ export default function Applications() {
                             description={
                               <div className="meta_student">
                                 <div><b>Kierunek:</b> {extractAndDisplay(item.studentProgrammes, 'programme')}</div>
-                                <div><b>Status:</b> {item.status ? <span class="light_orange_color">Zaliczony</span> : "Do zaliczenia"}</div>
-                                <div><b>Termin:</b> {item.date}</div>
+                                {/* <div><b>Status:</b> {item.status ? <span class="light_orange_color">Zaliczony</span> : "Do zaliczenia"}</div> */}
+                                {/* <div><b>Termin:</b> {item.date}</div> */}
                                 <div onClick={(e) => fetchStudentInfo(item.id)}><b>Zobacz</b></div>
                               </div>
                             }
@@ -116,11 +126,11 @@ export default function Applications() {
                 )}
             </div>
 
-            <div class="student__informations__container__half">
+            <div class="student__informations__container__half spinner">
             {!isStudentSelected && <h2>Wybierz studenta z listy obok</h2>}
-            {(isStudentSelected && detailsLoading) && <Spin />}
+            {(isStudentSelected && detailsLoading) && <Spin style={{marginTop:"20px"}}/>}
             {(isStudentSelected && !detailsLoading) && (
-                <StudentCardAdmin user={data[0]} />
+                <StudentCardAdmin user={isSelected} company={isStudentSelected} />
             )}
             </div>
         </div>
