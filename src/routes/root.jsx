@@ -1,7 +1,7 @@
 import { Outlet, Link, useLoaderData, redirect, useNavigation, Route, Navigate } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 import { useTranslation } from 'react-i18next';
-import LanguageSwitcher from "../components/LanguageSwitcher";
+import Header from "../components/Header";
 
 export async function loader({ params }) {
 //   const contacts = await getContacts();
@@ -29,7 +29,7 @@ export default function Root() {
             ? <Navigate replace to="/login" />
             : (
                 <>
-                    <LanguageSwitcher />
+                    <Header />
                     <h2>{t('Welcome')} {cookies[__cookieName].firstName}!</h2>
                     <button onClick={logout}>{t('Logout')}</button>
                 </>

@@ -1,0 +1,27 @@
+.header__container{
+    background:#fff;
+    margin:5px;
+    border-radius:10px;
+    padding:10px 40px;
+    display:flex;
+    color:black;
+    align-items:baseline;
+
+    &--logo{
+        margin-right:40px;
+    }
+
+    &--menu{
+        flex:1;
+        display: flex;
+        gap:40px;
+        
+        a{color:black;}
+        a.active{color:$strongOrange}
+
+    }
+
+    &--languageSwitcher{
+        align-self:center;
+    }
+}

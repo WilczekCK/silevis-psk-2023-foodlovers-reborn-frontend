@@ -1,5 +1,6 @@
 @import './variables.scss';
 @import './pages/login.scss';
+@import './pages/header.scss';
 
 @font-face {
     font-family: 'psk-font-bn';
@@ -34,11 +35,18 @@
     src: url("../fonts/SWZINSRN.TTF");
 } 
 
+html{
+    width:100%;
+    height:100%;
+    background: $grey;
+}
+
 body{
     color:white;
-    background: $grey;
     margin:unset;
     font-family: 'psk-font-ln';
+    max-width:1360px;
+    margin:0 auto;
 }
 
 label, a {
