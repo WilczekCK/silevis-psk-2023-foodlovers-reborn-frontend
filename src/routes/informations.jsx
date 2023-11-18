@@ -6,17 +6,51 @@ import Header from "../components/Header";
 import { Divider } from 'antd';
 import { Button } from 'antd';
 import HeadingWithInfo from '../components/HeadingWithInfo';
+import ModalDate from '../components/ModalDate';
+import ModalCompany from '../components/ModalCompany';
+import { Modal } from 'antd';
+
 
 export default function Login() {
   const [cookies, setCookie] = useCookies([__cookieName]);
   const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
   const { t, i18n } = useTranslation();
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedModal, setIsSelectedModal] = useState(false);
+
+    const handleSelectedModal = ({target}) => {
+        let {name} = target.offsetParent;
+        if(!name) name = target.name;
+
+        console.log(name);
+        setIsSelectedModal(name);
+        showModal();
+    }
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+
   return (
     !isCookieAvailable
         ? <Navigate replace to="/login" />
         : <>
         <Header />
+        <>
+            <Modal width={'700px'} title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+                {selectedModal === 'date' && <ModalDate />}
+                {selectedModal === 'company' && <ModalCompany />}
+            </Modal>
+        </>
         <div class="student__informations__container">
             <div class="student__informations__container__half">
                 <h3>Dane studenta</h3>
@@ -87,6 +121,8 @@ export default function Login() {
                         <Button 
                             type="primary"
                             size="regular"
+                            onClick={handleSelectedModal}
+                            name="date"
                         >
                             Chcę zmienić termin 
                         </Button>
@@ -114,6 +150,8 @@ export default function Login() {
                     <Button 
                         type="primary"
                         size="regular"
+                        onClick={handleSelectedModal}
+                        name="company"
                     >
                         Dodaj firmę
                     </Button>
