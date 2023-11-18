@@ -101,3 +101,18 @@ a.ant-btn, button{
         color: $black;
     }
 }
+
+.company__modal {
+    display: flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.company__modal{
+    
+    label,button{width:48%;}
+    button{
+        margin-top:22px;
+    }
+    label{color:$black; font-family:'psk-font-db'}
+}

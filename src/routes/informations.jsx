@@ -46,7 +46,7 @@ export default function Login() {
         : <>
         <Header />
         <>
-            <Modal width={'700px'} title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
+            <Modal width={'700px'} title={selectedModal == 'date' ? 'Wyślij prośbę o zmianę terminu' : 'Dodaj firme'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer="">
                 {selectedModal === 'date' && <ModalDate />}
                 {selectedModal === 'company' && <ModalCompany />}
             </Modal>
