@@ -135,3 +135,17 @@ a.ant-btn, button{
 
 .student__list{height:400px; overflow-y:scroll; box-sizing:border-box; padding-right:8px; margin-top:20px;}
 .notSelected{background:$grey !important; color:$black;}
+
+.submitter{
+    display: flex;
+    flex-direction: row;
+    gap:10px;
+
+    button:nth-child(1){
+        background:#4A8E32 !important;
+    }
+
+    button:nth-child(2){
+        background:#933535 !important;
+    }
+}
