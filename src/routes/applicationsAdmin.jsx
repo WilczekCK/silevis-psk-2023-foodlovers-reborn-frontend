@@ -89,15 +89,15 @@ export default function Applications() {
         <Header />
         <div class="student__informations__container">
             <div class="student__informations__container__half">
-                <h3>Lista praktykantów</h3>
+                <h3>{t('ListHeadingOne')}</h3>
                 <Divider />
 
                 {listLoading && <Spin />}
                 {!listLoading && (
                   <>
                     <HeadingWithInfo 
-                            title="Wyniki" 
-                            content={`Wyświetlono: ${data.length} studentów`}
+                            title={t('ListHeadingThree')}
+                            content={`${t('ListSubheadingOne')}: ${data.length} ${t('ListSubheadingTwo')}`}
                         />
                     <div class="student__list">
                     <List
@@ -111,10 +111,10 @@ export default function Applications() {
                             title={<a key={item.id} studentid={item.id}>{item.firstName} {item.lastName}</a>}
                             description={
                               <div className="meta_student">
-                                <div><b>Kierunek:</b> {extractAndDisplay(item.studentProgrammes, 'programme')}</div>
+                                <div><b>{t('ListResultsOne')}</b> {extractAndDisplay(item.studentProgrammes, 'programme')}</div>
                                 {/* <div><b>Status:</b> {item.status ? <span class="light_orange_color">Zaliczony</span> : "Do zaliczenia"}</div> */}
                                 {/* <div><b>Termin:</b> {item.date}</div> */}
-                                <div onClick={(e) => fetchStudentInfo(item.id)}><b>Zobacz</b></div>
+                                <div onClick={(e) => fetchStudentInfo(item.id)}><b>{t('ListLinkOne')}</b></div>
                               </div>
                             }
                           />
