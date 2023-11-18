@@ -8,10 +8,13 @@ import HeadingWithInfo from '../components/HeadingWithInfo';
 
 export default function Login() {
   const [cookies, setCookie] = useCookies([__cookieName]);
+  const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
   const { t, i18n } = useTranslation();
 
   return (
-    <>
+    !isCookieAvailable
+        ? <Navigate replace to="/login" />
+        : <>
         <Header />
         <div class="student__informations__container">
             <div class="student__informations__container__half">

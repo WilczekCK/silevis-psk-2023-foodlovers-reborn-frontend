@@ -15,7 +15,7 @@ export default function Header(){
 
     function logout(){
         removeCookie(__cookieName);
-        redirect('/login');
+        redirect('/');
     }
 
     return (
