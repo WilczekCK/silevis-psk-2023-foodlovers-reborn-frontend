@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslation } from 'react-i18next';
 import Header from "../components/Header";
 import { Divider } from 'antd';
+import { Button } from 'antd';
 import HeadingWithInfo from '../components/HeadingWithInfo';
 
 export default function Login() {
@@ -82,10 +83,14 @@ export default function Login() {
                 <Divider />
                 <h4>Dane firmy</h4>
                 <div class="info_divided_flex_column">
-                    <HeadingWithInfo 
-                        title="Miesiąc praktyk" 
-                        content="PLACEHOLDER"
-                    />
+                    <HeadingWithInfo title="Miesiąc praktyk" content="PLACEHOLDER"> 
+                        <Button 
+                            type="primary"
+                            size="regular"
+                        >
+                            Chcę zmienić termin 
+                        </Button>
+                    </HeadingWithInfo>
 
                     <HeadingWithInfo 
                         title="Termin praktyk" 
@@ -105,7 +110,14 @@ export default function Login() {
                 <HeadingWithInfo 
                         title="Inna firma" 
                         content="Posiadasz doświadczenie zawodowe z innej firmy?"
-                />
+                >
+                    <Button 
+                        type="primary"
+                        size="regular"
+                    >
+                        Dodaj firmę
+                    </Button>
+                </HeadingWithInfo>
             </div>
         </div>
     </>
