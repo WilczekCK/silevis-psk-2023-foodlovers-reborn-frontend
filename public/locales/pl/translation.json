@@ -15,5 +15,10 @@
     "Lecturer": "wykładowcy",    
 
     "WelcomeStudentSubheadingOne": "Znajdujesz się właśnie w panelu głównym Systemu Praktyk przystosowanym do oczekiwań ",
-    "WelcomeHeadingTwo": "Regulamin korzystania z systemu praktyk"
+    "WelcomeHeadingTwo": "Regulamin korzystania z systemu praktyk",
+    
+    "LecturerHeaderOne": "Lista praktykantów",
+    "LecturerHeaderTwo": "Powiadomienia",
+    "StudentHeaderOne": "Dane studenta i praktyk zawodowych",
+    "StudentHeaderTwo": "Wnioski i dokumenty"
 }

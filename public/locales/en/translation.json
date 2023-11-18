@@ -15,5 +15,10 @@
     "Lecturer": "lecturer",    
 
     "WelcomeStudentSubheadingOne": "You are now in the main panel of the Internship System adapted to the expectations of",
-    "WelcomeHeadingTwo": "Regulations for using the internship system"
+    "WelcomeHeadingTwo": "Regulations for using the internship system",
+
+    "LecturerHeaderOne": "List of practicans",
+    "LecturerHeaderTwo": "Notifications",
+    "StudentHeaderOne": "Interships and student's info",
+    "StudentHeaderTwo": "Applications and docs"
 }

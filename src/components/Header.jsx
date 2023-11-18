@@ -33,14 +33,14 @@ export default function Header(){
                     cookie[__cookieName].staffStatus > 0
                         ? (
                             <>
-                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applicationsAdmin">Lista praktykantów</NavLink>
-                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/notifications">Powiadomienia</NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applicationsAdmin"> {t('LecturerHeaderOne')} </NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/notifications"> {t('LecturerHeaderTwo')} </NavLink>
                             </>
                         )
                         : (
                             <>
-                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/informations">Dane studenta i praktyk zawodowych</NavLink>
-                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applications">Wnioski i dokumenty</NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/informations">{t('StudentHeaderOne')}</NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applications">{t('StudentHeaderTwo')}</NavLink>
                             </>
                         )
                 }
