@@ -59,7 +59,7 @@ export default function Applications() {
   ];
 
   return (
-    !isCookieAvailable
+    !isCookieAvailable || cookies[__cookieName].staffStatus > 0
         ? <Navigate replace to="/login" />
         : <>
         <Header />

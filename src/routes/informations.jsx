@@ -40,8 +40,8 @@ export default function Login() {
     };
 
   return (
-    !isCookieAvailable
-        ? <Navigate replace to="/login" />
+    !isCookieAvailable || cookies[__cookieName].staffStatus > 0
+        ? <Navigate replace to="/" />
         : <>
         <Header />
         <>

@@ -29,8 +29,21 @@ export default function Header(){
             </NavLink>
 
             <div class="header__container--menu">
-                <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/informations">Dane studenta i praktyk zawodowych</NavLink>
-                <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applications">Wnioski i dokumenty</NavLink>
+                {
+                    cookie[__cookieName].staffStatus > 0
+                        ? (
+                            <>
+                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applicationsAdmin">Lista praktykantów</NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/notifications">Powiadomienia</NavLink>
+                            </>
+                        )
+                        : (
+                            <>
+                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/informations">Dane studenta i praktyk zawodowych</NavLink>
+                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applications">Wnioski i dokumenty</NavLink>
+                            </>
+                        )
+                }
             </div>
 
             <div class="header__container--languageSwitcher">
