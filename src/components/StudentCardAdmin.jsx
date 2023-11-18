@@ -4,8 +4,11 @@ import { useCookies } from 'react-cookie';
 import { Button } from 'antd';
 import { Divider } from 'antd';
 import HeadingWithInfo from './HeadingWithInfo';
+import ModalCompany from './ModalCompany';
 import StudentCardApplication from './StudentCardApplications';
 import dayjs from 'dayjs';
+import { Modal } from 'antd';
+
 
 const extractAndDisplay = (array, key) => array.map(item => item[key]).join(', ');
 const months = {
@@ -28,9 +31,36 @@ export default function StudentCardAdmin(props){
     const [cookie, setCookie, removeCookie] = useCookies([__cookieName]);
     const { t, i18n } = useTranslation();
     const [infoSelected, setInfoSelected] = useState('student');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedModal, setIsSelectedModal] = useState(false);
 
+    const handleSelectedModal = ({target}) => {
+        let {name} = target.offsetParent;
+        if(!name) name = target.name;
+
+        console.log(name);
+        setIsSelectedModal(name);
+        showModal();
+    }
+
+    const showModal = () => {
+        setIsModalOpen(true);
+    };
+
+    const handleOk = () => {
+        setIsModalOpen(false);
+    };
+
+    const handleCancel = () => {
+        setIsModalOpen(false);
+    };
+    
     return (
         <>
+                <Modal width={'700px'} title={selectedModal == 'date' ? 'Wyślij prośbę o zmianę terminu' : 'Dodaj firme'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer="">
+                    {selectedModal === 'company' && <ModalCompany />}
+            </Modal>
+
             <h4>{props.user.firstName} {props.user.lastName} ({props.user.id})</h4>
             
             <div style={{display:'flex', flexDirection:'row', gap:'10px', flexWrap: 'wrap'}}>
@@ -122,8 +152,9 @@ export default function StudentCardAdmin(props){
                         <HeadingWithInfo 
                             title={t('ListHeadingTwelve')}
                             content=""  
-                        >
-                                <Button type="primary"> {t('ListButtonEight')} </Button>
+                        >                  
+                            <Button  onClick={handleSelectedModal}
+                        name="company" type="primary"> {t('ListButtonEight')} </Button>
                         </HeadingWithInfo>
                     </div>
                 </>

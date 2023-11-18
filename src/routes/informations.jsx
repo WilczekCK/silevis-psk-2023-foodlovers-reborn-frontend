@@ -1,6 +1,6 @@
 import { useCookies } from 'react-cookie';
 import { Navigate, redirect } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import Header from "../components/Header";
 import { Divider } from 'antd';
@@ -10,7 +10,24 @@ import ModalDate from '../components/ModalDate';
 import ModalCompany from '../components/ModalCompany';
 import { Modal } from 'antd';
 import axios from 'axios'
+import { Alert, Flex, Spin } from 'antd';
+import dayjs from 'dayjs';
+import { InputNumber, Space } from 'antd';
 
+const months = {
+    1: 'styczniowe',
+    2: 'lutowe',
+    3: 'marcowe',
+    4: 'kwietniowe',
+    5: 'majowe',
+    6: 'czerwcowe',
+    7: 'lipcowe',
+    8: 'sierpniowe',
+    9: 'wrzesniowe',
+    10: 'październikowe',
+    11: 'listopadowe',
+    12: 'grudniowe'
+  };
 
 export default function Login() {
   const [cookies, setCookie] = useCookies([__cookieName]);
@@ -19,26 +36,22 @@ export default function Login() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedModal, setIsSelectedModal] = useState(false);
     const [details, setDetails] = useState(false);
+    const [detailsLoading, setDetailLoading] = useState(false);
 
-    async function fetchStudentInfo(id){
-        const user = getItemById(id);
-        setIsSelected(user);
-        setDetailsLoading(true);
-        setIsStudentSelected(false);
+    async function fetchStudentInfo(){
+        setDetailLoading(true);
     
         await axios({
-          url: `http://10.5.5.208:5158/api/Internship/GetByStudentId?id=${id}`
+          url: `http://10.5.5.208:5158/api/Internship/GetByStudentId?id=${cookies[__cookieName].id}`
         }).then(async response => {
-          
           if (response) {
-            setIsStudentSelected(response.data)
-    
+            setDetails(response.data)
+            
             // Dla efektu :)
             setTimeout(function(){
-              setDetailsLoading(false)
+                setDetailLoading(false);
             }, 1500);
           }
-          
         })
       }
 
@@ -63,17 +76,15 @@ export default function Login() {
         setIsModalOpen(false);
     };
 
+    useEffect(() => {
+        fetchStudentInfo()
+    }, [])
+
   return (
     !isCookieAvailable || cookies[__cookieName].staffStatus > 0
         ? <Navigate replace to="/" />
         : <>
         <Header />
-        <>
-            <Modal width={'700px'} title={selectedModal == 'date' ? 'Wyślij prośbę o zmianę terminu' : 'Dodaj firme'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer="">
-                {selectedModal === 'date' && <ModalDate />}
-                {selectedModal === 'company' && <ModalCompany />}
-            </Modal>
-        </>
         <div class="student__informations__container">
             <div class="student__informations__container__half">
                 <h3>Dane studenta</h3>
@@ -115,32 +126,42 @@ export default function Login() {
                 </div>
             </div>
 
+            
             <div class="student__informations__container__half">
                 <h3>Dane praktyki zawodowej</h3>
                 <Divider />
+                
+                {detailsLoading && <Spin/>}
+                {(!detailsLoading && details) && <><h4>Dane firmy</h4>
 
-                <h4>Dane firmy</h4>
+                <>
+                    <Modal width={'700px'} title={selectedModal == 'date' ? 'Wyślij prośbę o zmianę terminu' : 'Dodaj firme'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer="">
+                        {selectedModal === 'date' && <ModalDate company={details} />}
+                        {selectedModal === 'company' && <ModalCompany />}
+                    </Modal>
+                </>
+
                 <div class="info_divided_flex_column">
                     <HeadingWithInfo 
                         title="Nazwa firmy" 
-                        content="PLACEHOLDER"
+                        content={details.internshipDetails.companyName}
                     />
 
                     <HeadingWithInfo 
                         title="Adres firmy" 
-                        content="ul. PLACEHOLDEROWA 404"
+                        content={details.internshipDetails.companyAddress}
                     />
 
                     <HeadingWithInfo 
                         title="Telefon kontaktowy" 
-                        content="123 456 789"
+                        content={details.internshipDetails.companyPhone ?? '-'}
                     />
                 </div>
 
                 <Divider />
                 <h4>Dane firmy</h4>
                 <div class="info_divided_flex_column">
-                    <HeadingWithInfo title="Miesiąc praktyk" content="PLACEHOLDER"> 
+                    <HeadingWithInfo title="Miesiąc praktyk" content={months[details.internshipDetails.month]}  > 
                         <Button 
                             type="primary"
                             size="regular"
@@ -153,7 +174,7 @@ export default function Login() {
 
                     <HeadingWithInfo 
                         title="Termin praktyk" 
-                        content="01.07 - 28.07"
+                        content={`${dayjs(details.internshipDetails.dateStart).format('DD.MM')} - ${dayjs(details.internshipDetails.dateEnd).format('DD.MM')}`}  
                     />
                 </div>
 
@@ -179,6 +200,7 @@ export default function Login() {
                         Dodaj firmę
                     </Button>
                 </HeadingWithInfo>
+            </>}
             </div>
         </div>
     </>
