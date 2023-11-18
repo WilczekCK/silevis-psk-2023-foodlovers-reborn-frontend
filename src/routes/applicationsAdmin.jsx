@@ -12,6 +12,8 @@ import pdf from '../assets/images/pdf.png';
 import {CloseCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 import { Avatar, List } from 'antd';
 import { Alert, Flex, Spin } from 'antd';
+import axios from 'axios'
+
 
 const positionOptions = ['top', 'bottom', 'both'];
 const alignOptions = ['start', 'center', 'end'];
@@ -23,7 +25,7 @@ export default function Applications() {
   const { t, i18n } = useTranslation();
   const [isSelected, setIsSelected] = useState(false);
 
-  const [listLoading, setListLoading] = useState(true);
+  const [listLoading, setListLoading] = useState(false);
   const [detailsLoading, setDetailsLoading] = useState(true);
   const [isStudentSelected, setIsStudentSelected] = useState(false);
 
@@ -36,6 +38,14 @@ export default function Applications() {
   function selectApplication({target}){
     const {id} = target;
     setIsSelected(getItemById(id));
+  }
+
+  async function fetchStudentInfo(id){
+    await axios({
+      url: `http://10.5.5.208:5158/api/Internship/GetByStudentId?id="${id}"`
+    }).then(async response => {
+      console.log(response)
+    })
   }
 
   const columns = [
@@ -94,7 +104,7 @@ export default function Applications() {
                                 <div><b>Kierunek:</b> {extractAndDisplay(item.studentProgrammes, 'programme')}</div>
                                 <div><b>Status:</b> {item.status ? <span class="light_orange_color">Zaliczony</span> : "Do zaliczenia"}</div>
                                 <div><b>Termin:</b> {item.date}</div>
-                                <div><b>Zobacz</b></div>
+                                <div onClick={(e) => fetchStudentInfo(item.id)}><b>Zobacz</b></div>
                               </div>
                             }
                           />

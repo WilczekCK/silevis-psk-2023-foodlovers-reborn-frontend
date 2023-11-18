@@ -31,10 +31,10 @@ export default function Root() {
                     <Header />
                     <div class="home__container">
                         <h2>{t('Welcome')} {cookies[__cookieName].firstName} {cookies[__cookieName].lastName}!</h2>
-                        <p>Znajdujesz się właśnie w panelu głównym Systemu Praktyk {cookies[__cookieName].staffStatus > 0 ? "Wykładowcy" : "Studenta"}</p>
+                        <p>{t('WelcomeStudentSubheadingOne')} {cookies[__cookieName].staffStatus > 0 ? t('Lecturer') : "Student"}</p>
                         <Divider />
 
-                        <h2>Regulamin korzystania z Systemu Praktyk</h2>
+                        <h2>{t('WelcomeHeadingTwo')}</h2>
                         <p>
                         Lorem ipsum dolor sit amet consectetur. Id aliquet ac venenatis lectus tempus fusce. Elit enim neque at justo nisi. Diam nulla dui amet quis lectus in enim risus. Adipiscing nisl interdum ultrices nunc duis non amet vitae. Neque velit elit auctor euismod et rhoncus augue lectus. Odio vitae blandit vitae pharetra in blandit sed tristique. Tristique ipsum nulla id odio tincidunt integer ultricies. Bibendum orci nam habitasse pretium ultricies cursus. Tincidunt felis eget rutrum accumsan. Vitae eget amet pellentesque mi ipsum. Purus ut est dui sit ultricies volutpat massa.
                         </p>

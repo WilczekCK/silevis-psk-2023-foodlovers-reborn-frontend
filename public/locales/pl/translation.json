@@ -11,5 +11,9 @@
     "English": "Angielski",
     "Polish": "Polski",
     "SelectLanguage": "Wybierz język",
-    "LoginPageMainText": "Zaloguj się do systemu praktyk"
+    "LoginPageMainText": "Zaloguj się do systemu praktyk",
+    "Lecturer": "wykładowcy",    
+
+    "WelcomeStudentSubheadingOne": "Znajdujesz się właśnie w panelu głównym Systemu Praktyk przystosowanym do oczekiwań ",
+    "WelcomeHeadingTwo": "Regulamin korzystania z systemu praktyk"
 }

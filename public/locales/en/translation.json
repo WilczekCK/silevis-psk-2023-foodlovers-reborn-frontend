@@ -11,5 +11,9 @@
     "English": "English",
     "Polish": "Polish",
     "SelectLanguage": "Select language",
-    "LoginPageMainText": "Login to the intership system"
+    "LoginPageMainText": "Login to the intership system",
+    "Lecturer": "lecturer",    
+
+    "WelcomeStudentSubheadingOne": "You are now in the main panel of the Internship System adapted to the expectations of",
+    "WelcomeHeadingTwo": "Regulations for using the internship system"
 }
