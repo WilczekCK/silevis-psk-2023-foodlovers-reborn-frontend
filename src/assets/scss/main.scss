@@ -53,6 +53,16 @@ label, a {
     color:$lightOrange;
 }
 
+button{
+    background:$lightOrange !important;
+
+    svg{fill:white !important}
+
+    &:hover{
+        background:$strongOrange !important;
+    }
+}
+
 .strong_orange_background{background:$strongOrange !important;}
 .light_orange_background{background:$lightOrange !important;}
 .lighter_orange_background{background:$lighterOrange !important;}

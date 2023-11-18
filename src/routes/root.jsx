@@ -18,10 +18,6 @@ export default function Root() {
     const isCookieAvailable = !(!cookies || !cookies[__cookieName] || !cookies[__cookieName].id);
     const { t, i18n } = useTranslation();
 
-    function logout(){
-        removeCookie(__cookieName);
-        redirect('/login');
-    }
 
     return (
         (
@@ -31,7 +27,6 @@ export default function Root() {
                 <>
                     <Header />
                     <h2>{t('Welcome')} {cookies[__cookieName].firstName}!</h2>
-                    <button onClick={logout}>{t('Logout')}</button>
                 </>
             )
         )
