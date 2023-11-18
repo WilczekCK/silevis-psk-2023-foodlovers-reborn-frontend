@@ -87,40 +87,40 @@ export default function Login() {
         <Header />
         <div class="student__informations__container">
             <div class="student__informations__container__half">
-                <h3>Dane studenta</h3>
+                <h3>{t('ListButtonOne')}</h3>
                 
                 <Divider />
 
-                <h4>Dane z uczelni</h4>
+                <h4>{t('InfoFromUniversity')}</h4>
                 
                 <div class="info_divided_flex_column">
                     <HeadingWithInfo 
-                        title="Numer albumu" 
+                        title={t('AlbumNumber')}
                         content={cookies[__cookieName].studentNumber} 
                     />
 
                     <HeadingWithInfo 
-                        title="Kierunek" 
+                        title={t('ListResultsOne')} 
                         content={cookies[__cookieName].studentProgrammes[0].programme} 
                     />
                 </div>
 
                 <Divider />
 
-                <h4>Dane osobowe</h4>
+                <h4>{t('PersonalInfo')}</h4>
                 <div class="info_divided_flex_column">
                     <HeadingWithInfo 
-                        title="Imię" 
+                        title={t('Name')} 
                         content={cookies[__cookieName].firstName} 
                     />
 
                     <HeadingWithInfo 
-                        title="Nazwisko" 
+                        title={t('Surname')} 
                         content={cookies[__cookieName].lastName} 
                     />
 
                     <HeadingWithInfo 
-                        title="Adres e-mail" 
+                        title={t('EmailAddres')} 
                         content={cookies[__cookieName].email} 
                     />
                 </div>
@@ -128,14 +128,14 @@ export default function Login() {
 
             
             <div class="student__informations__container__half">
-                <h3>Dane praktyki zawodowej</h3>
+                <h3>{t("ListButtonTwo")}</h3>
                 <Divider />
                 
                 {detailsLoading && <Spin/>}
-                {(!detailsLoading && details) && <><h4>Dane firmy</h4>
+                {(!detailsLoading && details) && <><h4>{t("ListHeadingFour")}</h4>
 
                 <>
-                    <Modal width={'700px'} title={selectedModal == 'date' ? 'Wyślij prośbę o zmianę terminu' : 'Dodaj firme'} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer="">
+                    <Modal width={'700px'} title={selectedModal == 'date' ? <>{t("ChangeTerminStudent")}</> : <> {t("AddCompany")} </>} open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer="">
                         {selectedModal === 'date' && <ModalDate company={details} />}
                         {selectedModal === 'company' && <ModalCompany />}
                     </Modal>
@@ -143,37 +143,37 @@ export default function Login() {
 
                 <div class="info_divided_flex_column">
                     <HeadingWithInfo 
-                        title="Nazwa firmy" 
+                        title={t("ListHeadingFive")} 
                         content={details.internshipDetails.companyName}
                     />
 
                     <HeadingWithInfo 
-                        title="Adres firmy" 
+                        title={t("ListHeadingSix")} 
                         content={details.internshipDetails.companyAddress}
                     />
 
                     <HeadingWithInfo 
-                        title="Telefon kontaktowy" 
+                        title={t("ListHeadingSeven")} 
                         content={details.internshipDetails.companyPhone ?? '-'}
                     />
                 </div>
 
                 <Divider />
-                <h4>Dane firmy</h4>
+                <h4>{t("ListResultsTwo")}</h4>
                 <div class="info_divided_flex_column">
-                    <HeadingWithInfo title="Miesiąc praktyk" content={months[details.internshipDetails.month]}  > 
+                    <HeadingWithInfo title={t("ListHeadingNine")} content={months[details.internshipDetails.month]}  > 
                         <Button 
                             type="primary"
                             size="regular"
                             onClick={handleSelectedModal}
                             name="date"
                         >
-                            Chcę zmienić termin 
+                            {t("WannaChangeTermin")}
                         </Button>
                     </HeadingWithInfo>
 
                     <HeadingWithInfo 
-                        title="Termin praktyk" 
+                        title={t("ListHeadingTen")} 
                         content={`${dayjs(details.internshipDetails.dateStart).format('DD.MM')} - ${dayjs(details.internshipDetails.dateEnd).format('DD.MM')}`}  
                     />
                 </div>
@@ -181,15 +181,15 @@ export default function Login() {
                 <Divider />
 
                 <HeadingWithInfo 
-                        title="Status zaliczenia" 
-                        content="W trakcie"
+                        title={t("ListHeadingEleven")}
+                        content={t("ListSubheadingThree")}
                 />
 
                 <Divider />
 
                 <HeadingWithInfo 
-                        title="Inna firma" 
-                        content="Posiadasz doświadczenie zawodowe z innej firmy?"
+                        title={t("ListHeadingTwelve")}
+                        content={t("haveOtherExperience")}
                 >
                     <Button 
                         type="primary"
@@ -197,7 +197,7 @@ export default function Login() {
                         onClick={handleSelectedModal}
                         name="company"
                     >
-                        Dodaj firmę
+                        {t("AddCompany")}
                     </Button>
                 </HeadingWithInfo>
             </>}

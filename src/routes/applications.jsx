@@ -65,7 +65,7 @@ export default function Applications() {
         <Header />
         <div class="student__informations__container">
             <div class="student__informations__container__half">
-                <h3>Twoje wnioski</h3>
+                <h3>{t('yourApplications')}</h3>
                 <Divider />
 
                 <Table columns={columns} dataSource={data} pagination={false}/>
@@ -73,20 +73,20 @@ export default function Applications() {
 
             <div class="student__informations__container__half">
                 <h3 style={{display:'flex'}}>
-                    Wniosek
+                    {t('application')}
                     {(isSelected && isSelected.status == '1') && <div class="green_bg_icon" style={{marginLeft:'10px'}}><CheckCircleOutlined /></div>}
                     {(isSelected && isSelected.status == '0') && <div class="red_bg_icon" style={{marginLeft:'10px'}}><CloseCircleOutlined /></div>}
                     </h3>
                 <Divider />
                 {
                 !isSelected 
-                    ? <>Wybierz wniosek po lewej</>
+                    ? <>{t('selectApplication')}</>
                     : (
                         <div class="student__informations__container__half--application">
                             <h4>{isSelected.title}</h4>
                             <div style={{display:'flex', gap:'10px'}}>
-                                <Button type="primary" href={isSelected.url} target="_blank">Pobierz oryginał</Button>
-                                <Button type="primary">Wyślij dokument</Button>
+                                <Button type="primary" href={isSelected.url} target="_blank">{t('downloadOriginal')}</Button>
+                                <Button type="primary">{t('sendDocs')}</Button>
                             </div>
                         </div>
                     )

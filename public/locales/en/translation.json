@@ -52,7 +52,22 @@
     "ListHeadingTwelve": "Another company",
     "ListButtonEight": "Show",
     "AlbumNumber": "Album's number",
-    "EmailAddres": "E-mail address"
+    "EmailAddres": "E-mail address",
+    "InfoFromUniversity": "Info from university",
+    "PersonalInfo": "Personal info",
+    "Name": "Name",
+    "Surname": "Subname",
+    "ChangeTerminStudent": "Send request for changing the date",
+    "AddCompany": "Dodaj firme",
+    "WannaChangeTermin": "I want to change the date",
+    "haveOtherExperience": "Do you have any present experience?",
 
-
+    "yourApplications": "Your applications",
+    "delivery": "Delivered",
+    "tableName": "Name",
+    "application": "Application",
+    "applications": "Applications",
+    "downloadOriginal": "Download genuine",
+    "sendDocs": "Send docs",
+    "selectApplication": "Select the application"
 }

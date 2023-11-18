@@ -30,8 +30,8 @@
     "ListHeadingThree": "Wyniki",
     "ListSubheadingOne": "Wyświetlono",
     "ListSubheadingTwo": "Studentów",
-    "ListResultsOne": "Kierunek:",
-    "ListResultsTwo": "Termin:",
+    "ListResultsOne": "Kierunek",
+    "ListResultsTwo": "Termin",
     "ListLinkOne": "ZOBACZ",
     "ListButtonOne": "Dane studenta",
     "ListButtonTwo": "Dane praktyki zawodowej",
@@ -52,12 +52,21 @@
     "ListHeadingTwelve": "Inna firma",
     "ListButtonEight": "Zobacz",
     "AlbumNumber": "Numer Albumu",
-    "EmailAddres": "Adres email"
-
-  
-
-
-
-
-
+    "EmailAddres": "Adres email",
+    "InfoFromUniversity": "Dane z uczelni",
+    "PersonalInfo": "Dane osobowe",
+    "Name": "Imie",
+    "Surname": "Nazwisko",
+    "ChangeTerminStudent": "Wyślij prośbę o zmianę terminu",
+    "AddCompany": "Dodaj firme",
+    "WannaChangeTermin": "Chce zmienić termin",
+    "haveOtherExperience": "Posiadasz doświadczenie zawodowe z innej firmy?",
+    "yourApplications": "Twoje Wnioski",
+    "delivery": "Dostarczono",
+    "tableName": "Nazwa",
+    "application": "Wniosek",
+    "applications": "Wnioski",
+    "downloadOriginal": "Pobierz oryginal",
+    "sendDocs": "Wyslij dokument",
+    "selectApplication": "Wybierz wniosek obok"
 }
