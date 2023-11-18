@@ -94,3 +94,10 @@ button{
 
 .red_bg_icon > *{background:#933535; border-radius:14px; font-size:24px;}
 .red_bg_icon > * svg{fill:white !important}
+
+.ant-table-row{
+    font-family: 'psk-font-ln';
+    a{
+        color: $black;
+    }
+}
