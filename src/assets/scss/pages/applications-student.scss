@@ -16,6 +16,11 @@
         padding:10px 30px;
         padding-bottom:40px;
 
+        .meta_student{
+            display: flex;
+            flex-direction: row;
+        }
+
         @media(max-width:1024px){
             width:100%;
             min-height:30vh;

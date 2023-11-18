@@ -109,10 +109,28 @@ a.ant-btn, button{
 }
 
 .company__modal{
-    
     label,button{width:48%;}
     button{
         margin-top:22px;
     }
     label{color:$black; font-family:'psk-font-db'}
 }
+
+.meta_student{
+    display: flex;
+    flex-direction: row;
+    gap:20px;
+    justify-content: space-between;
+
+    div{
+    }
+
+    > div:last-of-type{
+        color:$strongOrange !important;
+        margin-top:-15px;
+        cursor:pointer;
+    }
+}
+
+
+.student__list{height:400px; overflow-y:scroll; box-sizing:border-box; padding-right:8px; margin-top:20px;}
