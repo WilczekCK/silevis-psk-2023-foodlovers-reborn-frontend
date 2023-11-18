@@ -12,13 +12,9 @@ import { Input } from 'antd';
 import { Checkbox } from 'antd';
 import { Button } from 'antd';
 
-
 import bgUrl from '../assets/images/login_image.jpg';
 import weaiLogo from '../assets/images/weaii-small.png';
 import pskLogo from '../assets/images/polibuda-logo-1.svg';
-
-
-
 
 export default function Login() {
   const [cookies, setCookie] = useCookies([__cookieName]);

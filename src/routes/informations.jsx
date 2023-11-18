@@ -17,6 +17,29 @@ export default function Login() {
   const { t, i18n } = useTranslation();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedModal, setIsSelectedModal] = useState(false);
+    const [details, setDetails] = useState(false);
+
+    async function fetchStudentInfo(id){
+        const user = getItemById(id);
+        setIsSelected(user);
+        setDetailsLoading(true);
+        setIsStudentSelected(false);
+    
+        await axios({
+          url: `http://10.5.5.208:5158/api/Internship/GetByStudentId?id=${id}`
+        }).then(async response => {
+          
+          if (response) {
+            setIsStudentSelected(response.data)
+    
+            // Dla efektu :)
+            setTimeout(function(){
+              setDetailsLoading(false)
+            }, 1500);
+          }
+          
+        })
+      }
 
     const handleSelectedModal = ({target}) => {
         let {name} = target.offsetParent;

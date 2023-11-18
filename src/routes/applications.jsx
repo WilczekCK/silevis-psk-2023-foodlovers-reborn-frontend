@@ -51,7 +51,7 @@ export default function Applications() {
       render: (text, url) => <a onClick={selectApplication} id={url.id}>{text}</a>
     },
     {
-      title: 'Status',
+      title: 'Dostarczono',
       dataIndex: 'status',
       key: 'status',
       render: (text) => text == '1' ? <div class="green_bg_icon"><CheckCircleOutlined /></div> : <div class="red_bg_icon"><CloseCircleOutlined /></div>
