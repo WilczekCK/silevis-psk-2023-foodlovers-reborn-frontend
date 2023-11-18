@@ -8,10 +8,7 @@ import { Button, Image } from 'antd';
 import { Space, Table, Tag } from 'antd';
 import HeadingWithInfo from '../components/HeadingWithInfo';
 import pdf from '../assets/images/pdf.png';
-import {
-    CloseCircleOutlined,
-    CheckCircleOutlined,
-  } from '@ant-design/icons';
+import {CloseCircleOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 
 
@@ -81,13 +78,16 @@ export default function Applications() {
                     {(isSelected && isSelected.status == '0') && <div class="red_bg_icon" style={{marginLeft:'10px'}}><CloseCircleOutlined /></div>}
                     </h3>
                 <Divider />
-
                 {
                 !isSelected 
                     ? <>Wybierz wniosek po lewej</>
                     : (
                         <div class="student__informations__container__half--application">
-                            <h3>{isSelected.title}</h3>
+                            <h4>{isSelected.title}</h4>
+                            <div style={{display:'flex', gap:'10px'}}>
+                                <Button type="primary" href={isSelected.url} target="_blank">Pobierz oryginał</Button>
+                                <Button type="primary">Wyślij dokument</Button>
+                            </div>
                         </div>
                     )
                 }
