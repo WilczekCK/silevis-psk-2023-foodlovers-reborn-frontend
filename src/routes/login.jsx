@@ -27,6 +27,33 @@ export default function Login() {
   const { t, i18n } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
 
+  //__allStudentsCookie
+  async function fetchAllStudents() {
+    return await axios({
+      url: `/api/all-emails`
+    }).then(async response => {
+      const {data} = response;
+
+      return data;
+    }).catch(error => {
+      alert(t('LoginErr'));
+      setIsLoading(false);
+    })
+  }
+
+  async function getDetailedInfoAboutAllStudents(data){
+    const detailedInfo = [];
+    for (const user of data) {
+      await axios({
+        url: `/api/user/${user}`
+      }).then(async response => {
+        detailedInfo.push(response.data);
+      })
+    }
+
+    return detailedInfo;
+  }
+
   //s022222@student.tu.kielce.pl
   async function onSubmit() {
     if(!userEmail) {
@@ -37,13 +64,30 @@ export default function Login() {
 
     await axios({
       url: `/api/user/${userEmail}`
-    }).then(response => {
+    }).then(async response => {
       const {data} = response;
       setIsLoading(false);
 
       if (data) {
         setCookie(__cookieName, data);
-        redirect('/');
+        
+        const students = await fetchAllStudents();
+        if (students) {
+          const getDetailedInfo = await getDetailedInfoAboutAllStudents(students);
+
+          if(getDetailedInfo){
+            console.log(getDetailedInfo);
+            setCookie(__allStudentsCookie, getDetailedInfo);
+            redirect('/');
+          } else {
+            alert(t('LoginErr'));
+            setIsLoading(false);
+          }
+
+        } else {
+          alert(t('LoginErr'));
+          setIsLoading(false);
+        }
       }
     }).catch(error => {
       alert(t('LoginErr'));

@@ -13,6 +13,7 @@ export default defineConfig({
       },
   }},
   define: {
-    __cookieName: JSON.stringify('psk-auth')
+    __cookieName: JSON.stringify('psk-auth'),
+    __allStudentsCookie: JSON.stringify('all-students'),
   }
 })
