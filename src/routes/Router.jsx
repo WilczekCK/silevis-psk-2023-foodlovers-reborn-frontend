@@ -1,5 +1,6 @@
 import ErrorPage from './error-page';
 import Login from './login.jsx';
+import Informations from './informations.jsx';
 import PdfDocuments from './pdfDocuments.jsx';
 import Root, { loader as rootLoader } from "./root";
 
@@ -20,6 +21,12 @@ export default function superrouter(createBrowserRouter){
         {
             path: "pdfDocuments",
             element: <PdfDocuments />,
+            errorElement: <ErrorPage />,
+            loader: rootLoader,
+        },
+        {
+            path: "informations",
+            element: <Informations />,
             errorElement: <ErrorPage />,
             loader: rootLoader,
         },
