@@ -7,8 +7,18 @@
     color:black;
     align-items:baseline;
 
+    @media(max-width:768px){
+        flex-direction: column;
+        gap:15px;
+    }
+
     &--logo{
         margin-right:40px;
+
+        @media(max-width:800px){
+            text-align: center;
+            width:100%;
+        }
     }
 
     &--menu{
@@ -19,6 +29,11 @@
         a{color:black; text-decoration: none;}
         a.active{color:$strongOrange}
 
+        @media(max-width:800px){
+            text-align: center;
+            width:100%;
+            justify-content: center;
+        }
     }
 
     &--languageSwitcher{
