@@ -34,7 +34,6 @@ export default function Header(){
                         ? (
                             <>
                             <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/applicationsAdmin"> {t('LecturerHeaderOne')} </NavLink>
-                            <NavLink className={({ isActive }) => (isActive ? 'active' : 'inactive')} to="/notifications"> {t('LecturerHeaderTwo')} </NavLink>
                             </>
                         )
                         : (
