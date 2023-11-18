@@ -80,3 +80,9 @@ button{
 .ant-input-affix-wrapper:hover,
 .ant-input-affix-wrapper:focus,
 .ant-input-affix-wrapper:focus-within{border-color:$lighterOrange !important;}
+
+.info_divided_flex_column{
+    gap:20px;
+    display: flex;
+    flex-direction: column;
+}

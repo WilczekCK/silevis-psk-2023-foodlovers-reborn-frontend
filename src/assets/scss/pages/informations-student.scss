@@ -5,11 +5,12 @@
 
     &__half{
         width:50%;
-        height:80vh;
+        min-height:70vh;
         margin:5px;
         border-radius:10px;
         background:#fff;
         padding:10px 30px;
+        padding-bottom:40px;
 
         h3{
             font-weight:700;
