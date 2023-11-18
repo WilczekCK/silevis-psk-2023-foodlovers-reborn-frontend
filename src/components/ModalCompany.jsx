@@ -6,6 +6,11 @@ import { Alert, Calendar } from 'antd';
 import { Button } from 'antd';
 import { Input } from 'antd';
 
+const nipRegex = /^[0-9]{10}$/
+const regonRegex = /^[0-9]{9}$/
+const krsRegex = /^[0-9]{10}$/
+const numberRegex = /^-?\d*(\.\d*)?$/
+
 export default function ModalCompany(){
     const [cookie, setCookie, removeCookie] = useCookies([__cookieName]);
     const { t, i18n } = useTranslation();
@@ -16,6 +21,56 @@ export default function ModalCompany(){
     const [companyName, setCompanyName] = useState('');
     const [companyAddress, setCompanyAddress] = useState('');
 
+
+    function isMatchingRegex(regex, str) {
+      return regex.test(str);
+    }
+  
+
+    const [nipErr, setNipErr] = useState(false);
+    function checkNip(value){
+      setNip(value);
+
+      if(!isMatchingRegex(numberRegex, value) || value === '' || value === '-'){
+        setNip('');
+      } else {
+        if(isMatchingRegex(nipRegex, value)){
+          setNipErr(false);
+        } else{
+          setNipErr(true);
+        }
+      }
+    }
+
+    const [regonErr, setRegonErr] = useState(false);
+    function checkRegon(value){
+      setRegon(value);
+
+      if(!isMatchingRegex(numberRegex, value) || value === '' || value === '-'){
+        setRegon('');
+      } else {
+        if(isMatchingRegex(regonRegex, value)){
+          setRegonErr(false);
+        } else{
+          setRegonErr(true);
+        }
+      }
+    }
+
+    const [krsErr, setKrsErr] = useState(false);
+    function checkKrs(value){
+      setKrs(value);
+
+      if(!isMatchingRegex(numberRegex, value) || value === '' || value === '-'){
+        setNip('');
+      } else {
+        if(isMatchingRegex(krsRegex, value)){
+          setKrsErr(false);
+        } else{
+          setKrsErr(true);
+        }
+      }
+    }
     
     return (
         <div className="company__modal">
@@ -23,18 +78,18 @@ export default function ModalCompany(){
 
             <label>
               NIP:
-              <Input type="number" min="0" placeholder="" value={nip} onChange={(e) => setNip(e.target.value)}/>
+              <Input status={!nipErr ? '' : 'error'}  placeholder="" value={nip} onChange={(e) => checkNip(e.target.value)}/>
             </label>
             
             <Button type="primary">Spróbuj uzupełnić po NIP</Button>
             <label>
             Regon
-            <Input type="number" min="0" placeholder="" value={regon} onChange={(e) => setRegon(e.target.value)} />
+            <Input status={!regonErr ? '' : 'error'}  placeholder="" value={regon} onChange={(e) => checkRegon(e.target.value)} />
             </label>
             
             <label>
               KRS
-              <Input type="number" min="0" placeholder="" value={krs} onChange={(e) => setKrs(e.target.value)} />
+              <Input status={!krsErr ? '' : 'error'}  placeholder="" value={krs} onChange={(e) => checkKrs(e.target.value)} />
             </label>
             
             <label>
