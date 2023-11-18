@@ -10,7 +10,7 @@ import LanguageDropdown from '../components/LanguageDropdown';
 
 
 export default function Header(){
-    const [removeCookie] = useCookies([__cookieName]);
+    const [cookie, setCookie, removeCookie] = useCookies([__cookieName]);
     const { t, i18n } = useTranslation();
 
     function logout(){
