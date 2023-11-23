@@ -28,7 +28,7 @@ So, what I did wrong in that project?
 
 ## Hall of fame (authors)
 - UI/UX Design
-- 
+
 **Natalia Płocka**
 - (LI: https://www.linkedin.com/in/nataliaplocka)
 - (BE: https://www.behance.net/nataliaplocka)
@@ -36,7 +36,7 @@ So, what I did wrong in that project?
 Project on Figma: https://www.figma.com/file/mFxgqbWrs9DayyC2XLVAZQ/Projekt-Hackathon-2023?type=design&node-id=1%3A2&mode=design&t=tfV4u4k6AOKPa3t6-1
 
 - Frontend
-- 
+
 **Paweł Wilk**
 - (LI: https://www.linkedin.com/in/wilk-pawel/)
 - (GH: https://www.github.com/wilczekck)
@@ -44,7 +44,7 @@ Project on Figma: https://www.figma.com/file/mFxgqbWrs9DayyC2XLVAZQ/Projekt-Hack
 Project on GH: **You are already here! :)**
 
 - Backend
-- 
+
 **Michał Szymczyk**
 - (LI: https://www.linkedin.com/in/micha%C5%82-szymczyk-a519b3257/)
 - (GH: https://github.com/Zimeek)
