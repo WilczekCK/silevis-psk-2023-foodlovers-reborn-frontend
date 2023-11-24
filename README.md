@@ -20,6 +20,7 @@ All thanks to my co-workers, I see the progress that we made, just look at the p
 **You are just the best! :)**
 
 Used technologies:
+- Vite
 - React (React Cookies, React Router, React i18n)
 - Axios
 - Ant Design UI
