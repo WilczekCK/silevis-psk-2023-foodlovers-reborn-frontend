@@ -19,6 +19,11 @@ All thanks to my co-workers, I see the progress that we made, just look at the p
 
 **You are just the best! :)**
 
+Used technologies:
+- React (React Cookies, React Router, React i18n)
+- Axios
+- Ant Design UI
+
 So, what I did wrong in that project?
 - Files do not keep the same labeling schema (usually its a camelCase, but sometimes its kebab-case)
 - Overwriting CSS of the UI kit (Ant design)
